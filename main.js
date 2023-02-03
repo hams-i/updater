@@ -1,6 +1,8 @@
 const electron = require("electron");
 const { BrowserView, BrowserWindow, ipcMain, Notification } = require("electron");
 const {autoUpdater, AppUpdater} = require('electron-updater');
+const url = require("url");
+const path = require("path");
 
 const {app} = electron;
 let mainWindow;
@@ -39,8 +41,8 @@ app.on('ready', () =>{
 
     // Main Screen 
     mainWindow = new BrowserWindow({
-        width: 1500,
-        height: 900,
+        width: 500,
+        height: 500,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false/*,
