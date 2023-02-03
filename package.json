@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hams-i/test-updater.git"
+    "url": "git+https://github.com/hams-i/updater.git"
   },
   "publish": {
     "provider": "github",
@@ -18,10 +18,6 @@
   },
   "author": "Hamsi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hams-i/test-updater/issues"
-  },
-  "homepage": "https://github.com/hams-i/test-updater#readme",
   "dependencies": {
     "electron": "^22.2.0",
     "electron-packager": "^17.1.1",
