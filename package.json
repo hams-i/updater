@@ -1,15 +1,44 @@
 {
   "name": "test-updater",
-  "version": "1.0.4",
-  "description": "",
+  "version": "2.0.4",
+  "description": "This is my first Auto-updater application.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dist":"electron-builder"
   },
-  "repository": "https://github.com/hams-i/updater.git",
-  "author": "hamsi",
-  "license": "ISC",
+  "repository": "https://github.com/hams-i/updater",
+  "publish": {
+    "provider": "github",
+    "releaseType": "release"
+  },
+  "build": {
+    "appId" : "tk.zodiacdesignn.testupdater",
+    "productName":"Test Updater",
+    "win":{
+        "target": "nsis",
+        "icon": "build/icon.ico"
+    },
+    "directories":{
+        "output":"dist"
+    },
+    "nsis": {
+        "oneClick": false,
+        "allowToChangeInstallationDirectory": true
+    },
+    "artifactName":"${productName}-${version}.${ext}"
+  },
+  "author": {
+    "name": "Hamsi",
+    "email": "pmrt276@gmail.com",
+    "url": "https://www.zodiacdesignn.tk/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hams-i/updater/issues"
+  },
+  "homepage": "https://github.com/hams-i/updater#readme",
   "devDependencies": {
     "electron": "^22.2.0",
     "electron-builder": "^23.6.0"

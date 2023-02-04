@@ -5,14 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto-Updater</title>
+    <!-- Faviocon -->
+    <link rel="shortcut icon" href="build/icon.ico" type="build/x-icon">
+    <link rel="icon" href="build/icon.ico" type="build/x-icon">
+
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
     <script>if (window.module) module = window.module;</script>
 </head>
 <body>
-    <h1>v1.0.4</h1>
-
-
+    <style>
+        h1{
+            color:whitesmoke;
+        }
+        body{
+            background:darkred;
+        }
+    </style>
+    <h1>v2.0.4</h1>
     <script>
         const electron = require("electron");
         const {ipcRenderer} = electron;

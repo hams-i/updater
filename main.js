@@ -1,12 +1,13 @@
 const electron = require("electron");
 const { BrowserView, BrowserWindow, ipcMain, Notification } = require("electron");
-const {autoUpdater, AppUpdater} = require('electron-updater');
+const {autoUpdater} = require('electron-updater');
 const url = require("url");
 const path = require("path");
 
 const {app} = electron;
 let mainWindow;
 
+autoUpdater.autoDownload = true;
 
 app.on('ready', () =>{
     // Main Screen 
@@ -19,8 +20,6 @@ app.on('ready', () =>{
         }
     });
 
-
-    mainWindow.setMenuBarVisibility(false);
     mainWindow.loadURL(
         url.format({
             pathname: path.join(__dirname, "app.html"),
@@ -30,7 +29,7 @@ app.on('ready', () =>{
     );
 
     // Updater
-    autoUpdater.checkForUpdatesAndNotify();
+    autoUpdater.checkForUpdates();
 
     autoUpdater.on('checking-for-update', () => {
       mainWindow.webContents.send("notification","Checking for update...");
