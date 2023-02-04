@@ -10,6 +10,18 @@
     <script>if (window.module) module = window.module;</script>
 </head>
 <body>
-    <h1>v1.0.1</h1>
+    <h1>v1.0.4</h1>
+
+
+    <script>
+        const electron = require("electron");
+        const {ipcRenderer} = electron;
+
+        ipcRenderer.on("notification", (e, notification) =>{
+            console.log(notification);
+        });
+    
+        
+    </script>
 </body>
 </html>

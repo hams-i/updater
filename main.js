@@ -9,44 +9,13 @@ let mainWindow;
 
 
 app.on('ready', () =>{
-    // Updater
-    autoUpdater.checkForUpdatesAndNotify();
-
-    autoUpdater.on('checking-for-update', () => {
-      console.log('Checking for update...');
-    });
-
-    autoUpdater.on('update-available', (info) => {
-      console.log('Update available.');
-    });
- 
-    autoUpdater.on('update-not-available', (info) => {
-      console.log('Update not available.');
-    });
-
-    autoUpdater.on('error', (err) => {
-      console.log('Error in auto-updater. ' + err);
-    });
-
-    autoUpdater.on('download-progress', (progressObj) => {
-      let log_message = "Download speed: " + progressObj.bytesPerSecond;
-      log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
-      log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
-      console.log(log_message);
-    });
-
-    autoUpdater.on('update-downloaded', (info) => {
-      console.log('Update downloaded');
-    });
-
     // Main Screen 
     mainWindow = new BrowserWindow({
         width: 500,
         height: 500,
         webPreferences: {
             nodeIntegration: true,
-            contextIsolation: false/*,
-            devTools: !app.isPackaged*/
+            contextIsolation: false
         }
     });
 
@@ -59,4 +28,35 @@ app.on('ready', () =>{
             slashes: true
         })
     );
+
+    // Updater
+    autoUpdater.checkForUpdatesAndNotify();
+
+    autoUpdater.on('checking-for-update', () => {
+      mainWindow.webContents.send("notification","Checking for update...");
+    });
+
+    autoUpdater.on('update-available', (info) => {
+      mainWindow.webContents.send("notification","Update available.");
+    });
+ 
+    autoUpdater.on('update-not-available', (info) => {
+      mainWindow.webContents.send("notification","Update not available.");
+    });
+
+    autoUpdater.on('error', (err) => {
+      mainWindow.webContents.send("notification",'Error in auto-updater. ' + err);
+    });
+
+    autoUpdater.on('download-progress', (progressObj) => {
+      let log_message = "Download speed: " + progressObj.bytesPerSecond;
+      log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+      log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+      console.log(log_message);
+      mainWindow.webContents.send("notification",log_message);
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+      mainWindow.webContents.send("notification",'Update downloaded');
+    });
 });
