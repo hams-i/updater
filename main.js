@@ -14,6 +14,7 @@ app.on('ready', () =>{
     mainWindow = new BrowserWindow({
         width: 500,
         height: 500,
+        icon: __dirname + 'build/icon.ico',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
