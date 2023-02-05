@@ -3,6 +3,7 @@
   "version": "2.0.4",
   "description": "This is my first Test updater application.",
   "main": "main.js",
+  "icon": "build/icon.ico",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
@@ -24,8 +25,12 @@
         "output":"dist"
     },
     "nsis": {
+        "perMachine": true,
+        "installerIcon": "build/icon.ico",
+        "uninstallerIcon": "build/icon.ico",
         "oneClick": false,
-        "allowToChangeInstallationDirectory": true
+        "allowToChangeInstallationDirectory": true,
+        "deleteAppDataOnUninstall": true
     },
     "artifactName":"${productName}-${version}.${ext}"
   },
